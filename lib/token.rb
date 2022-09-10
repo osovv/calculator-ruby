@@ -17,14 +17,10 @@ class Token
   end
 
   def lparen?
-    @id == :lparen
+    @id.eql?(:lparen)
   end
 
   def rparen?
-    @id == :rparen
-  end
-
-  def to_s
-    "#{value}"
+    @id.eql?(:rparen)
   end
 end

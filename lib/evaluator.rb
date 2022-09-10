@@ -31,10 +31,14 @@ class Evaluator
         when :mult
           stack.push(op1.send(cast_to) * op2.send(cast_to))
         when :div
-          if op2.send(cast_to) == 0
+          if op2.send(cast_to).eql?(0)
             raise ArgumentError, "Can't divide by zero!" if op2.send(cast_to) == 0
           else
-            stack.push(op1.send(cast_to) / op2.send(cast_to))
+            if !((op1.send(cast_to) % op2.send(cast_to)).eql?(0))
+              stack.push(op1.send(cast_to).to_f / op2.send(cast_to))
+            else
+              stack.push(op1.send(cast_to) / op2.send(cast_to))
+            end
           end
         end
       end
