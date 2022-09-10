@@ -1,0 +1,2 @@
+class TokenizationError < ::StandardError
+end
