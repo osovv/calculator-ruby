@@ -1,4 +1,4 @@
-require_relative 'calculator'
+require_relative 'lib/calculator'
 
 if ARGV.length != 1
   puts "Usage: #{$0} [expression]"
