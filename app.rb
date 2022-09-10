@@ -7,7 +7,7 @@ else
     calculator = Calculator.new
     puts "Result: #{calculator.run(ARGV[0])}"
   rescue => e
-      puts e.message
+    puts e.message
   end
 end
 
