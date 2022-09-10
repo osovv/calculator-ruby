@@ -5,12 +5,12 @@ require_relative 'token_type'
 
 class Calculator
   TOKEN_TYPES = [
+    TokenType.new(:decimal,     /(\-)?(\d*\.)?\d+/,  precedence: 0),
+    TokenType.new(:integer,     /(\-)?\d+/,          precedence: 0),
     TokenType.new(:add,         /\+/,           precedence: 10),
     TokenType.new(:sub,         /-/,            precedence: 10),
     TokenType.new(:mult,        /\*/,           precedence: 20),
     TokenType.new(:div,         /\//,           precedence: 20),
-    TokenType.new(:decimal,     /(\d*\.)?\d+/,  precedence: 0),
-    TokenType.new(:integer,     /\d+/,          precedence: 0),
     TokenType.new(:whitespace,  /\s+/,          ignore: true),
     TokenType.new(:lparen,      /\(/,           precedence: 1),
     TokenType.new(:rparen,      /\)/,           precedence: 1)
