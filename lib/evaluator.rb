@@ -13,11 +13,14 @@ class Evaluator
 
         is_integer = integer?(op1) && integer?(op2)
 
-        cast_to = if is_integer
+        coerce_to = if is_integer
           :to_i
         else
           :to_f
         end
+
+        coerced_op1 = op1.send(coerce_to)
+        coerced_op2 = op2.send(coerce_to)
 
         if has_nil
           raise "Malformed expression: too many operators"
@@ -25,19 +28,19 @@ class Evaluator
 
         case token.id
         when :add
-          stack.push(op1.send(cast_to) + op2.send(cast_to))
+          stack.push(coerced_op1 + coerced_op2)
         when :sub
-          stack.push(op1.send(cast_to) - op2.send(cast_to))
+          stack.push(coerced_op1 - coerced_op2)
         when :mult
-          stack.push(op1.send(cast_to) * op2.send(cast_to))
+          stack.push(coerced_op1 * coerced_op2)
         when :div
-          if op2.send(cast_to).eql?(0)
-            raise ArgumentError, "Can't divide by zero!" if op2.send(cast_to) == 0
+          if coerced_op2.eql?(0)
+            raise ArgumentError, "Can't divide by zero!" if coerced_op2 == 0
           else
-            if !((op1.send(cast_to) % op2.send(cast_to)).eql?(0))
-              stack.push(op1.send(cast_to).to_f / op2.send(cast_to))
+            if !((coerced_op1 % coerced_op2).eql?(0))
+              stack.push(coerced_op1.to_f / coerced_op2)
             else
-              stack.push(op1.send(cast_to) / op2.send(cast_to))
+              stack.push(coerced_op1 / coerced_op2)
             end
           end
         end
