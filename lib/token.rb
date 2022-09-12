@@ -5,22 +5,23 @@ class Token
     @id = token_type.id
     @ignore = token_type.options[:ignore]
     @precedence = token_type.options[:precedence]
+    @group = token_type.group
     @value = value
   end
 
   def operator?
-    [:add, :sub, :mult, :div].include? @id
+    @group.eql?(:operator)
   end
 
   def operand?
-    [:decimal, :integer].include? @id
+    @group.eql?(:operand)
   end
 
   def lparen?
-    @id.eql?(:lparen)
+    @group.eql?(:lparen)
   end
 
   def rparen?
-    @id.eql?(:rparen)
+    @group.eql?(:rparen)
   end
 end

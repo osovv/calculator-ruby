@@ -3,8 +3,8 @@ require_relative 'exceptions'
 require 'strscan'
 
 class Lexer
-  def initialize(token_types)
-    @token_types = token_types
+  def initialize(grammar)
+    @token_types = grammar.token_types
   end
 
   def call(input)
