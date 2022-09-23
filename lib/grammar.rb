@@ -12,7 +12,8 @@ class Grammar
     TokenType.new(:div,         :operator,  /\//,               precedence: 20),
     TokenType.new(:whitespace,  :none,      /\s+/,              ignore: true),
     TokenType.new(:lparen,      :lparen,    /\(/,               precedence: 1),
-    TokenType.new(:rparen,      :rparen,    /\)/,               precedence: 1)
+    TokenType.new(:rparen,      :rparen,    /\)/,               precedence: 1),
+    TokenType.new(:log,         :func,      /log/,              precedence: 30)
   ].freeze
 
   def initialize(token_types = TOKEN_TYPES)

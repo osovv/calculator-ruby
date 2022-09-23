@@ -27,6 +27,8 @@ class Evaluator
         end
 
         case token.id
+        when :log
+          stack.push(Math.log(coerced_op1, coerced_op2))
         when :add
           stack.push(coerced_op1 + coerced_op2)
         when :sub

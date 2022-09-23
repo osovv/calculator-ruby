@@ -16,6 +16,12 @@ class Parser
           end
 
           opstack << token
+        in :func
+          while !(opstack.empty? or opstack.last.precedence < token.precedence) do
+            output << opstack.pop
+          end
+
+          opstack << token
         in :lparen
           opstack << token
         in :rparen

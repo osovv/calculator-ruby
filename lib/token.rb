@@ -24,4 +24,8 @@ class Token
   def rparen?
     @group.eql?(:rparen)
   end
+
+  def func?
+    @group.eql?(:func)
+  end
 end
