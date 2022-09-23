@@ -11,13 +11,7 @@ class Evaluator
 
         has_nil = op2.nil? || op1.nil?
 
-        is_integer = integer?(op1) && integer?(op2)
-
-        coerce_to = if is_integer
-          :to_i
-        else
-          :to_f
-        end
+        coerce_to = :to_f
 
         coerced_op1 = op1.send(coerce_to)
         coerced_op2 = op2.send(coerce_to)
@@ -27,6 +21,8 @@ class Evaluator
         end
 
         case token.id
+        when :exp
+          stack.push(coerced_op1 ** coerced_op2)
         when :log
           stack.push(Math.log(coerced_op1, coerced_op2))
         when :add
@@ -36,7 +32,7 @@ class Evaluator
         when :mult
           stack.push(coerced_op1 * coerced_op2)
         when :div
-          if coerced_op2.eql?(0)
+          if coerced_op2.eql?(0.0)
             raise ArgumentError, "Can't divide by zero!" if coerced_op2 == 0
           else
             if !((coerced_op1 % coerced_op2).eql?(0))
@@ -54,11 +50,5 @@ class Evaluator
     else
       stack.pop
     end
-  end
-
-  private
-
-  def integer?(value)
-    Integer(value, exception: false)
   end
 end

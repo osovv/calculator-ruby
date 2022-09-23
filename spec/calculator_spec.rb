@@ -50,12 +50,19 @@ class TestLexer < Test::Unit::TestCase
     assert_equal(-5, calculator.run('(-5) + 0'))
   end
 
-
   def test_log
     calculator = Calculator.new
     assert_equal(2, calculator.run('log 100 10'))
     assert_equal(Float::INFINITY, calculator.run('log 4 1'))
     assert_equal(0.5, calculator.run('log 10 100'))
+  end
+
+   def test_exp
+    calculator = Calculator.new
+    assert_equal(1.0, calculator.run('100 ^ 0'))
+    assert_equal(100.0, calculator.run('100 ^ 1'))
+    assert_equal(5.0, calculator.run('25 ^ 0.5'))
+    assert_equal(25.0, calculator.run('5 ^ 2'))
   end
 
   def test_pharentesis_mismatch

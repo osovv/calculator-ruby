@@ -26,5 +26,5 @@ ruby app.rb [expression]
 ### Example:
 
 ```bash
-ruby app.rb "log(10, 100) * ((4 - 7) ^ (3 + 1) / 4)"
+ruby app.rb "log 100 10 * ((4 - 7) ^ (3 + 1) / 4)"
 ```
