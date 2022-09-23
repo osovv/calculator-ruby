@@ -1,5 +1,5 @@
 class Token
-  attr_reader :id, :ignore, :precedence, :value
+  attr_reader :id, :ignore, :precedence, :value, :group
 
   def initialize(token_type, value)
     @id = token_type.id
