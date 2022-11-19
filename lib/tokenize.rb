@@ -2,7 +2,7 @@ require_relative 'token'
 require_relative 'exceptions'
 require 'strscan'
 
-class Lexer
+class Tokenize
   def initialize(grammar)
     @token_types = grammar.token_types
   end
