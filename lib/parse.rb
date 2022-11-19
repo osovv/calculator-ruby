@@ -1,6 +1,6 @@
 require_relative 'exceptions'
 
-class Parser
+class Parse
   def call(tokens)
     opstack = []
     output = []
