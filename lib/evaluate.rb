@@ -1,4 +1,4 @@
-class Evaluator
+class Evaluate
   def call (postfix_expression)
     stack = []
 
