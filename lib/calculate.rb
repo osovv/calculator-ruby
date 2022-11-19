@@ -4,7 +4,7 @@ require_relative 'evaluator'
 require_relative 'token_type'
 require_relative 'grammar'
 
-class Calculator
+class Calculate
   def initialize
     @grammar = Grammar.new
     @lexer = Lexer.new(@grammar)
@@ -12,7 +12,7 @@ class Calculator
     @evaluator = Evaluator.new
   end
 
-  def run(expression)
+  def call(expression)
     @evaluator.(@parser.(@lexer.(expression)))
   end
 end

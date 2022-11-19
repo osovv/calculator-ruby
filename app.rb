@@ -1,10 +1,10 @@
-require_relative 'lib/calculator'
+require_relative 'lib/calculate'
 
 if ARGV.length != 1
   puts "Usage: #{$0} [expression]"
 else
-  calculator = Calculator.new
-  puts "Result: #{calculator.run(ARGV[0])}"
+  calculate = Calculate.new
+  puts "Result: #{calculate.(ARGV[0])}"
 end
 
 
